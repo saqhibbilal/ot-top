@@ -35,6 +35,7 @@ docker-compose down
 - **Zookeeper**: Kafka coordination (port 2181)
 - **Redis**: State storage (port 6379)
 - **Event Simulator**: Generates factory machine events
+- **Event Processor**: Consumes events from Kafka and stores state in Redis
 
 ## Project Structure
 
@@ -42,18 +43,26 @@ docker-compose down
 .
 ├── docker-compose.yml      # Infrastructure setup
 ├── event-simulator/        # Event generation service
+├── event-processor/        # Event processing service
 ├── README.md              # This file
 └── .env.example           # Environment variables template
 ```
 
-## Phase 1 Status
+## Phase Status
+
+### Phase 1: Infrastructure & Event Simulation ✅
 
 ✅ Part 1: Docker Compose Setup (Kafka, Zookeeper, Redis)
 ✅ Part 2: Project Structure  
 ✅ Part 3: Event Schema Definition
 ✅ Part 4: Event Simulator Service
 
-**Phase 1 Complete!** ✅ The system is now generating and publishing factory events to Kafka.
+### Phase 2: Event Processing & State Management ✅
+
+✅ Part 1: Event processor service structure
+✅ Part 2: Kafka consumer implementation
+✅ Part 3: Redis state storage logic
+✅ Part 4: Integration - process events and update state
 
 ### Verify Events are Being Published
 

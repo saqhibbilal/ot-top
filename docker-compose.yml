@@ -53,6 +53,23 @@ services:
       - ot-network
     restart: unless-stopped
 
+  event-processor:
+    build:
+      context: ./event-processor
+      dockerfile: Dockerfile
+    container_name: event-processor
+    depends_on:
+      - kafka
+      - redis
+    environment:
+      KAFKA_BROKER: kafka:9092
+      KAFKA_TOPIC: factory-events
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+    networks:
+      - ot-network
+    restart: unless-stopped
+
 networks:
   ot-network:
     driver: bridge
