@@ -50,6 +50,15 @@ curl http://localhost:8000/api/machines
 curl http://localhost:8000/api/machines/PCB-001
 ```
 
+### Frontend Dashboard
+
+Access the dashboard at `http://localhost:3000`:
+
+- Real-time machine status monitoring
+- Color-coded severity indicators (green/yellow/red)
+- Auto-refreshes every 5 seconds
+- Modern, clean interface
+
 ## Services
 
 - **Kafka**: Event streaming (port 9092)
@@ -58,6 +67,7 @@ curl http://localhost:8000/api/machines/PCB-001
 - **Event Simulator**: Generates factory machine events
 - **Event Processor**: Consumes events from Kafka and stores state in Redis
 - **API Service**: REST API for accessing machine state (port 8000)
+- **Frontend**: React dashboard for visualization (port 3000)
 
 ## Project Structure
 
@@ -67,6 +77,7 @@ curl http://localhost:8000/api/machines/PCB-001
 ├── event-simulator/        # Event generation service
 ├── event-processor/        # Event processing service
 ├── api-service/           # REST API service
+├── frontend/              # React dashboard
 ├── README.md              # This file
 └── .env.example           # Environment variables template
 ```
@@ -86,6 +97,20 @@ curl http://localhost:8000/api/machines/PCB-001
 ✅ Part 2: Kafka consumer implementation
 ✅ Part 3: Redis state storage logic
 ✅ Part 4: Integration - process events and update state
+
+### Phase 3: API Layer & Data Access ✅
+
+✅ Part 1: API service structure
+✅ Part 2: Redis connection and basic setup
+✅ Part 3: REST endpoints implementation
+✅ Part 4: Integration and testing
+
+### Phase 4: Frontend Dashboard & Visualization ✅
+
+✅ Part 1: Frontend structure (React + Vite)
+✅ Part 2: Modern UI & theme setup
+✅ Part 3: Dashboard components & API integration
+✅ Part 4: Docker integration & polish
 
 ### Verify Events are Being Published
 

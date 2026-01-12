@@ -86,6 +86,19 @@ services:
       - ot-network
     restart: unless-stopped
 
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: frontend
+    depends_on:
+      - api-service
+    ports:
+      - "3000:80"
+    networks:
+      - ot-network
+    restart: unless-stopped
+
 networks:
   ot-network:
     driver: bridge
