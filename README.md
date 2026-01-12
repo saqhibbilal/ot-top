@@ -29,6 +29,27 @@ docker-compose logs -f
 docker-compose down
 ```
 
+### API Endpoints
+
+Once the system is running, the API is available at `http://localhost:8000`:
+
+- `GET /health` - Health check
+- `GET /api/machines` - Get all machines with current state
+- `GET /api/machines/{machine_id}` - Get specific machine state
+
+Example:
+
+```bash
+# Health check
+curl http://localhost:8000/health
+
+# Get all machines
+curl http://localhost:8000/api/machines
+
+# Get specific machine
+curl http://localhost:8000/api/machines/PCB-001
+```
+
 ## Services
 
 - **Kafka**: Event streaming (port 9092)
@@ -36,6 +57,7 @@ docker-compose down
 - **Redis**: State storage (port 6379)
 - **Event Simulator**: Generates factory machine events
 - **Event Processor**: Consumes events from Kafka and stores state in Redis
+- **API Service**: REST API for accessing machine state (port 8000)
 
 ## Project Structure
 
@@ -44,6 +66,7 @@ docker-compose down
 ├── docker-compose.yml      # Infrastructure setup
 ├── event-simulator/        # Event generation service
 ├── event-processor/        # Event processing service
+├── api-service/           # REST API service
 ├── README.md              # This file
 └── .env.example           # Environment variables template
 ```

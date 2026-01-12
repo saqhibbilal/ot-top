@@ -70,6 +70,22 @@ services:
       - ot-network
     restart: unless-stopped
 
+  api-service:
+    build:
+      context: ./api-service
+      dockerfile: Dockerfile
+    container_name: api-service
+    depends_on:
+      - redis
+    ports:
+      - "8000:8000"
+    environment:
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+    networks:
+      - ot-network
+    restart: unless-stopped
+
 networks:
   ot-network:
     driver: bridge
