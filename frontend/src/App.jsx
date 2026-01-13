@@ -2,6 +2,9 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import MachineCard from './components/MachineCard'
 import Header from './components/Header'
+import StatsTable from './components/StatsTable'
+import StatusChart from './components/StatusChart'
+import MachineTypeChart from './components/MachineTypeChart'
 
 const API_URL = import.meta.env.VITE_API_URL || '/api'
 
@@ -65,11 +68,25 @@ function App() {
         )}
 
         {!loading && !error && machines.length > 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {machines.map((machine) => (
-              <MachineCard key={machine.machine_id} machine={machine} />
-            ))}
-          </div>
+          <>
+            {/* Charts Section */}
+            <div className="mb-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <StatusChart machines={machines} />
+              <MachineTypeChart machines={machines} />
+            </div>
+
+            {/* Stats Table */}
+            <div className="mb-8">
+              <StatsTable machines={machines} />
+            </div>
+
+            {/* Machine Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {machines.map((machine) => (
+                <MachineCard key={machine.machine_id} machine={machine} />
+              ))}
+            </div>
+          </>
         )}
       </main>
     </div>
